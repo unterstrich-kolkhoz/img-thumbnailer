@@ -16,7 +16,7 @@ import (
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/s3/s3manager"
 	"github.com/gin-gonic/gin"
-	"github.com/hellerve/thumbnailer/config"
+	"github.com/hellerve/img-thumbnailer/config"
 	"github.com/satori/go.uuid"
 
 	"gopkg.in/gographics/imagick.v3/imagick"
@@ -192,7 +192,7 @@ func handleResize(bucket string, region string) func(c *gin.Context) {
 }
 
 func main() {
-	configfile := flag.String("config", "./etc/thumbnailer/server.conf", "Configuration file location")
+	configfile := flag.String("config", "./etc/img-thumbnailer/server.conf", "Configuration file location")
 	flag.Parse()
 	conf, err := config.ReadConfig(*configfile)
 
