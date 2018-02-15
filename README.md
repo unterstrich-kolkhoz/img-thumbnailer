@@ -1,17 +1,17 @@
-# thumbnailer
+# img-thumbnailer
 
 Wherein lies a microservice that resizes thumbnails, given to it by URLs. It is
 simple to configure and easy to use, and strives to just work.
 
 ## Install
 
-You can install it by issuing `go get github.com/hellerve/thumbnailer`. But
+You can install it by issuing `go get github.com/hellerve/img-thumbnailer`. But
 beware: it requires ImageMagick!
 
 ## Configure
 
 The binary needs a configuration file to work. By default, thumbnailer searches
-for a file named `./etc/thumbnailer/server.conf`, but this can be changed by
+for a file named `./etc/img-thumbnailer/server.conf`, but this can be changed by
 supplying the `-config` flag.
 
 The configuration can be in one of four directories, namely:

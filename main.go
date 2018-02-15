@@ -10,9 +10,11 @@ import (
 	"math"
 	"net/http"
 	"os"
+	"os/user"
 	"sync"
 
 	"github.com/aws/aws-sdk-go/aws"
+	"github.com/aws/aws-sdk-go/aws/credentials"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/s3/s3manager"
 	"github.com/gin-gonic/gin"
@@ -121,6 +123,13 @@ func upload(bucket string, region string, path string) (string, error) {
 	}
 	defer file.Close()
 
+	usr, err := user.Current()
+	if err != nil {
+		return "", err
+	}
+
+	dir := usr.HomeDir
+
 	name, err := uuid.NewV4()
 
 	if err != nil {
@@ -128,8 +137,9 @@ func upload(bucket string, region string, path string) (string, error) {
 	}
 
 	sess, err := session.NewSession(&aws.Config{
-		Region: aws.String(region)},
-	)
+		Region: aws.String(region),
+		Credentials: credentials.NewSharedCredentials(dir+"/.aws/credentials", "thumbnailer"),
+	})
 
 	if err != nil {
 		return "", err
@@ -182,6 +192,7 @@ func handleResize(bucket string, region string) func(c *gin.Context) {
 		url, err := upload(bucket, region, path)
 
 		if err != nil {
+      log.Println(err.Error())
 			c.String(http.StatusBadRequest, err.Error())
 			return
 		}
