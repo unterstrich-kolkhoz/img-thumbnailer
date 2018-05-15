@@ -5,7 +5,7 @@ simple to configure and easy to use, and strives to just work.
 
 ## Install
 
-You can install it by issuing `go get github.com/hellerve/img-thumbnailer`. But
+You can install it by issuing `go get github.com/unterstrich-kolkhoz/img-thumbnailer`. But
 beware: it requires ImageMagick!
 
 ## Configure

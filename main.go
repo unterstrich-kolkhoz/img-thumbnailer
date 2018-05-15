@@ -18,8 +18,9 @@ import (
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/s3/s3manager"
 	"github.com/gin-gonic/gin"
-	"github.com/hellerve/img-thumbnailer/config"
 	"github.com/satori/go.uuid"
+
+	"github.com/unterstrich-kolkhoz/img-thumbnailer/config"
 
 	"gopkg.in/gographics/imagick.v3/imagick"
 )
